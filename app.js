@@ -7,31 +7,25 @@
 const SERVERS = {
   server1: {
     id: "server1",
-    name: "Server 1 (The Island)",
+    name: "ANOVA The Island",
     gamePort: 7777,
     queryPort: 27015
   },
   server2: {
     id: "server2",
-    name: "Server 2 (Fjordur)",
+    name: "ANOVA Fjordur",
     gamePort: 7779,
     queryPort: 27016
   }
 };
 
 const DEFAULT_PUBLIC_HOST = "200.181.245.38";
-const LOCAL_HOST = "127.0.0.1";
 
 // Dicionário Multilíngue (PT, EN, ES)
 const I18N = {
   pt: {
     clusterStatus: "SERVIDOR ONLINE",
     heroTitlePrefix: "CONECTAR AO",
-    heroDesc: "Escolha abaixo o método mais conveniente para a sua plataforma e entre imediatamente no jogo.",
-    networkLabel: "ONDE VOCÊ ESTÁ JOGANDO?",
-    netPublic: "🌐 Pela Internet (Amigos / Jogadores)",
-    netLocal: "🏠 No mesmo PC / Casa do Host (Localhost)",
-    selectMap: "SELECIONE O MAPA:",
     steamTitle: "Steam",
     steamSub: "Conexão via Console no Jogo",
     steamSteps: [
@@ -64,11 +58,6 @@ const I18N = {
   en: {
     clusterStatus: "SERVER ONLINE",
     heroTitlePrefix: "CONNECT TO",
-    heroDesc: "Choose the most convenient method for your platform below and join the game immediately.",
-    networkLabel: "WHERE ARE YOU PLAYING FROM?",
-    netPublic: "🌐 Over the Internet (Friends / Players)",
-    netLocal: "🏠 Same PC / Host Local Network (Localhost)",
-    selectMap: "SELECT MAP:",
     steamTitle: "Steam",
     steamSub: "In-Game Console Connection",
     steamSteps: [
@@ -101,11 +90,6 @@ const I18N = {
   es: {
     clusterStatus: "SERVIDOR EN LÍNEA",
     heroTitlePrefix: "CONECTAR A",
-    heroDesc: "Elija abajo el método más conveniente para su plataforma y únase de inmediato al juego.",
-    networkLabel: "¿DÓNDE ESTÁ JUGANDO?",
-    netPublic: "🌐 Por Internet (Amigos / Jugadores)",
-    netLocal: "🏠 En la misma PC / Red del Host (Localhost)",
-    selectMap: "SELECCIONE EL MAPA:",
     steamTitle: "Steam",
     steamSub: "Conexión por Consola en el Juego",
     steamSteps: [
@@ -140,15 +124,10 @@ const I18N = {
 // Estado da Aplicação
 let currentLang = localStorage.getItem("ark_lang") || "pt";
 let currentServerId = "server1";
-let currentNetMode = "public"; // "public" ou "local"
 let currentHost = resolveHost();
 
 // Resolver IP ou Host Atual
 function resolveHost() {
-  if (currentNetMode === "local") {
-    return LOCAL_HOST;
-  }
-
   const urlParams = new URLSearchParams(window.location.search);
   const paramHost = urlParams.get("ip") || urlParams.get("host");
   if (paramHost) return paramHost.trim();
@@ -163,7 +142,6 @@ function resolveHost() {
 document.addEventListener("DOMContentLoaded", () => {
   setupLanguage();
   setupMapTabs();
-  setupNetworkToggle();
   setupSettingsModal();
   setupCopyButtons();
 
@@ -177,30 +155,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// Alternador de Rede (Internet vs Local)
-function setupNetworkToggle() {
-  const btnPublic = document.getElementById("btnNetPublic");
-  const btnLocal = document.getElementById("btnNetLocal");
-
-  btnPublic.addEventListener("click", () => {
-    currentNetMode = "public";
-    btnPublic.classList.add("active");
-    btnLocal.classList.remove("active");
-    currentHost = resolveHost();
-    updateDisplay();
-    showToast("Modo de Rede: Internet (IP Público)");
-  });
-
-  btnLocal.addEventListener("click", () => {
-    currentNetMode = "local";
-    btnLocal.classList.add("active");
-    btnPublic.classList.remove("active");
-    currentHost = resolveHost();
-    updateDisplay();
-    showToast("Modo de Rede: Localhost (Mesmo PC)");
-  });
-}
-
 // Atualização da Interface
 function updateDisplay() {
   const srv = SERVERS[currentServerId];
@@ -209,8 +163,8 @@ function updateDisplay() {
   // Título e Nomes
   const elPrefix = document.getElementById("txtHeroPrefix");
   const elServerName = document.getElementById("txtCurrentServerName");
-  if (elPrefix) elPrefix.textContent = t.heroTitlePrefix;
-  if (elServerName) elServerName.textContent = srv.name;
+  if (elPrefix && t && t.heroTitlePrefix) elPrefix.textContent = t.heroTitlePrefix;
+  if (elServerName && srv && srv.name) elServerName.textContent = srv.name;
   
   // Valores de Conexão
   const consoleCommand = `open ${currentHost}:${srv.gamePort}`;
@@ -248,11 +202,6 @@ function applyTranslations() {
   };
 
   setTxt("txtClusterStatus", t.clusterStatus);
-  setTxt("txtHeroDesc", t.heroDesc);
-  setTxt("txtNetworkLabel", t.networkLabel);
-  setTxt("btnNetPublic", t.netPublic);
-  setTxt("btnNetLocal", t.netLocal);
-  setTxt("txtSelectMap", t.selectMap);
 
   setTxt("txtSteamTitle", t.steamTitle);
   setTxt("txtSteamSub", t.steamSub);

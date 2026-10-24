@@ -280,7 +280,7 @@ body {
 /* Hero Section */
 .hero-section {
   text-align: center;
-  margin-bottom: 36px;
+  margin-bottom: 24px;
 }
 
 .hero-title {
@@ -289,7 +289,7 @@ body {
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
-  margin-bottom: 12px;
+  margin-bottom: 0;
 }
 
 .highlight-cyan {
@@ -297,199 +297,12 @@ body {
   text-shadow: 0 0 20px var(--cyan-glow);
 }
 
-.hero-subtitle {
-  color: var(--text-muted);
-  font-size: 1.1rem;
-  max-width: 680px;
-  margin: 0 auto 28px;
-}
-
-/* Network Toggle Box (Internet vs Localhost) */
-.network-toggle-box {
-  margin: 0 auto 20px;
-  max-width: 620px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
-
-.network-label {
-  font-family: var(--font-hud);
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  color: var(--text-dim);
-}
-
-.network-btn-group {
-  display: flex;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 5px;
-  border-radius: var(--radius-pill);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  gap: 6px;
-  width: 100%;
-}
-
-.net-btn {
-  flex: 1;
-  background: none;
-  border: none;
-  color: var(--text-muted);
-  font-size: 0.85rem;
-  font-weight: 600;
-  padding: 8px 16px;
-  border-radius: var(--radius-pill);
-  cursor: pointer;
-  transition: var(--transition);
-  text-align: center;
-}
-
-.net-btn:hover {
-  color: var(--text-main);
-  background: rgba(255, 255, 255, 0.06);
-}
-
-.net-btn.active {
-  background: var(--cyan-primary);
-  color: #070a10;
-  font-weight: 700;
-  box-shadow: 0 0 12px var(--cyan-glow);
-}
-
-/* Steam AppID Notice */
-.steam-appid-notice {
-  max-width: 680px;
-  margin: 0 auto 24px;
-  background: rgba(255, 183, 3, 0.08);
-  border: 1px solid rgba(255, 183, 3, 0.25);
-  border-radius: var(--radius-md);
-  padding: 14px 20px;
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  text-align: left;
-}
-
-.notice-icon {
-  font-size: 1.4rem;
-  flex-shrink: 0;
-  line-height: 1;
-}
-
-.notice-content {
-  font-size: 0.88rem;
-  color: #e2e8f0;
-  line-height: 1.5;
-}
-
-.notice-content strong {
-  display: block;
-  color: var(--amber-accent);
-  margin-bottom: 4px;
-  font-size: 0.92rem;
-}
-
-.notice-content kbd {
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 4px;
-  padding: 1px 6px;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--amber-accent);
-}
-
-.notice-content code {
-  color: var(--cyan-primary);
-  font-family: var(--font-mono);
-}
-
-/* Legacy Link Row */
-.legacy-link-row {
-  margin-top: 14px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.78rem;
-  color: var(--text-dim);
-}
-
-.legacy-link {
-  color: var(--text-muted);
-  text-decoration: underline;
-  transition: var(--transition);
-}
-
-.legacy-link:hover {
-  color: var(--cyan-primary);
-}
-
-.auto-connect-info {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  text-align: left;
-}
-
-.spinner-timer {
-  width: 48px;
-  height: 48px;
-  flex-shrink: 0;
-}
-
-.circular-chart {
-  display: block;
-  max-width: 100%;
-}
-
-.circle-bg {
-  fill: none;
-  stroke: rgba(255, 255, 255, 0.1);
-  stroke-width: 3.5;
-}
-
-.circle {
-  fill: none;
-  stroke: var(--cyan-primary);
-  stroke-width: 3.5;
-  stroke-linecap: round;
-  transition: stroke-dasharray 0.3s ease;
-}
-
-.timer-text {
-  fill: var(--text-main);
-  font-family: var(--font-hud);
-  font-size: 0.9rem;
-  font-weight: 700;
-  text-anchor: middle;
-}
-
-.auto-connect-title {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--text-main);
-}
-
-.auto-connect-text {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-}
-
-.auto-connect-actions {
-  display: flex;
-  gap: 8px;
-}
-
 /* Cluster Tabs (Map Selector) */
 .cluster-tabs-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
   margin-bottom: 32px;
-  flex-wrap: wrap;
 }
 
 .tabs-label {
