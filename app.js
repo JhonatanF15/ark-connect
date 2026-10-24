@@ -244,37 +244,48 @@ function updateDisplay() {
 // Tradução de Textos da Página
 function applyTranslations() {
   const t = I18N[currentLang];
+  const setTxt = (id, val, isHtml = false) => {
+    const el = document.getElementById(id);
+    if (el) {
+      if (isHtml) el.innerHTML = val;
+      else el.textContent = val;
+    }
+  };
 
-  document.getElementById("txtClusterStatus").textContent = t.clusterStatus;
-  document.getElementById("txtHeroDesc").textContent = t.heroDesc;
-  document.getElementById("txtNetworkLabel").textContent = t.networkLabel;
-  document.getElementById("btnNetPublic").textContent = t.netPublic;
-  document.getElementById("btnNetLocal").textContent = t.netLocal;
-  document.getElementById("txtNoticeTitle").textContent = t.noticeTitle;
-  document.getElementById("txtNoticeText").innerHTML = t.noticeText;
-  document.getElementById("txtSelectMap").textContent = t.selectMap;
+  setTxt("txtClusterStatus", t.clusterStatus);
+  setTxt("txtHeroDesc", t.heroDesc);
+  setTxt("txtNetworkLabel", t.networkLabel);
+  setTxt("btnNetPublic", t.netPublic);
+  setTxt("btnNetLocal", t.netLocal);
+  setTxt("txtNoticeTitle", t.noticeTitle);
+  setTxt("txtNoticeText", t.noticeText, true);
+  setTxt("txtSelectMap", t.selectMap);
 
-  document.getElementById("txtSteamTitle").textContent = t.steamTitle;
-  document.getElementById("txtSteamSub").textContent = t.steamSub;
-  document.getElementById("txtSteamDesc").textContent = t.steamDesc;
-  document.getElementById("txtBtnSteam").textContent = t.btnSteam;
-  document.getElementById("txtSteamRawLabel").textContent = t.steamRawLabel;
+  setTxt("txtSteamTitle", t.steamTitle);
+  setTxt("txtSteamSub", t.steamSub);
+  setTxt("txtSteamDesc", t.steamDesc);
+  setTxt("txtBtnSteam", t.btnSteam);
+  setTxt("txtSteamRawLabel", t.steamRawLabel);
 
-  document.getElementById("txtEpicTitle").textContent = t.epicTitle;
-  document.getElementById("txtEpicSub").textContent = t.epicSub;
-  document.getElementById("txtEpicSteps").innerHTML = t.epicSteps.map(step => `<li>${step}</li>`).join("");
+  setTxt("txtEpicTitle", t.epicTitle);
+  setTxt("txtEpicSub", t.epicSub);
+  if (t.epicSteps) {
+    setTxt("txtEpicSteps", t.epicSteps.map(step => `<li>${step}</li>`).join(""), true);
+  }
 
-  document.getElementById("txtFavTitle").textContent = t.favTitle;
-  document.getElementById("txtFavSub").textContent = t.favSub;
-  document.getElementById("txtFavSteps").innerHTML = t.favSteps.map(step => `<li>${step}</li>`).join("");
-  document.getElementById("txtFavNote").innerHTML = t.favNote;
+  setTxt("txtFavTitle", t.favTitle);
+  setTxt("txtFavSub", t.favSub);
+  if (t.favSteps) {
+    setTxt("txtFavSteps", t.favSteps.map(step => `<li>${step}</li>`).join(""), true);
+  }
+  setTxt("txtFavNote", t.favNote, true);
 
-  document.getElementById("txtDiscordTitle").textContent = t.discordTitle;
-  document.getElementById("txtDiscordSub").textContent = t.discordSub;
-  document.getElementById("txtDiscordDesc").innerHTML = t.discordDesc;
+  setTxt("txtDiscordTitle", t.discordTitle);
+  setTxt("txtDiscordSub", t.discordSub);
+  setTxt("txtDiscordDesc", t.discordDesc, true);
 
-  document.getElementById("txtModalTitle").textContent = t.modalTitle;
-  document.getElementById("txtModalDesc").textContent = t.modalDesc;
+  setTxt("txtModalTitle", t.modalTitle);
+  setTxt("txtModalDesc", t.modalDesc);
 
   // Botões de Idioma
   document.querySelectorAll(".lang-btn").forEach(btn => {
