@@ -3,19 +3,13 @@
  * Gerenciador de conexão simplificado via console in-game (Steam & Epic Games)
  */
 
-// Configuração dos Servidores do Cluster
+// Configuração do Servidor
 const SERVERS = {
   server1: {
     id: "server1",
     name: "ANOVA The Island",
     gamePort: 7777,
     queryPort: 27015
-  },
-  server2: {
-    id: "server2",
-    name: "ANOVA Fjordur",
-    gamePort: 7779,
-    queryPort: 27016
   }
 };
 
