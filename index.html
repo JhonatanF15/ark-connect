@@ -88,18 +88,6 @@
         </div>
       </div>
 
-      <!-- Warning / Tip Card for Steam AppID Error -->
-      <div class="steam-appid-notice">
-        <div class="notice-icon">💡</div>
-        <div class="notice-content">
-          <strong id="txtNoticeTitle">Aviso sobre o erro "AppID Inválido" da Steam:</strong>
-          <span id="txtNoticeText">
-            O aplicativo da Steam possui um bug conhecido que falha ao conectar por fora do jogo. 
-            O botão <strong>"ENTRAR DIRETO NO ARK"</strong> abaixo usa o AppID oficial <code>346110</code> para contornar essa falha! 
-            Ou simplesmente copie o comando e cole no console do jogo com <kbd>TAB</kbd>.
-          </span>
-        </div>
-      </div>
     </section>
 
     <!-- Map Selector Tabs -->
@@ -118,9 +106,9 @@
     <!-- Connection Cards Grid -->
     <div class="cards-grid">
       
-      <!-- Card 1: Steam 1-Click Direto (AppID 346110) -->
+      <!-- Card 1: Steam (Console In-Game) -->
       <div class="card card-hero">
-        <div class="card-badge">RECOMENDADO STEAM</div>
+        <div class="card-badge">STEAM PC</div>
         <div class="card-header">
           <div class="card-icon steam-icon">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
@@ -128,35 +116,27 @@
             </svg>
           </div>
           <div>
-            <h3 class="card-title" id="txtSteamTitle">Steam (Conexão Direta)</h3>
-            <p class="card-subtitle" id="txtSteamSub">Inicia com AppID 346110 (Sem erro de AppID)</p>
+            <h3 class="card-title" id="txtSteamTitle">Steam</h3>
+            <p class="card-subtitle" id="txtSteamSub">Conexão via Console no Jogo</p>
           </div>
         </div>
 
         <div class="card-body">
-          <p class="card-instruction" id="txtSteamDesc">
-            Clique no botão abaixo para abrir o ARK pela Steam já conectando diretamente na partida.
-          </p>
+          <ol class="step-list" id="txtSteamSteps">
+            <li>Abra o ARK na Steam.</li>
+            <li>No menu principal ou em qualquer mapa, aperte a tecla <kbd>TAB</kbd>.</li>
+            <li>Cole o comando abaixo e aperte <kbd>ENTER</kbd>:</li>
+          </ol>
 
-          <a href="#" class="btn btn-steam btn-glow" id="btnSteamRun">
-            <span class="btn-text" id="txtBtnSteam">ENTRAR DIRETO NO ARK</span>
-            <span class="btn-subtext" id="lblSteamRunSub">Protocolo: steam://run/346110</span>
-          </a>
-
-          <div class="copy-box">
-            <span class="copy-label" id="txtSteamRawLabel">Comando Direto (Console):</span>
+          <div class="copy-box highlight-box">
             <div class="copy-input-row">
-              <input type="text" readonly class="code-input command-font" id="inputSteamConsole" value="open ...">
-              <button type="button" class="copy-action-btn" id="btnCopySteamConsole" title="Copiar Comando">
+              <input type="text" readonly class="code-input command-font" id="inputSteamCmd" value="open ...">
+              <button type="button" class="copy-action-btn" id="btnCopySteam" title="Copiar Comando">
                 <span class="copy-text">Copiar</span>
               </button>
             </div>
           </div>
-          
-          <div class="legacy-link-row">
-            <span class="legacy-label">Ou tente o protocolo navegador:</span>
-            <a href="#" id="linkSteamConnectLegacy" class="legacy-link">steam://connect (Janela Externa)</a>
-          </div>
+          <span class="card-footer-note" id="lblSteamPort">Porta de Jogo: 7777</span>
         </div>
       </div>
 

@@ -1,6 +1,6 @@
 /**
  * ANOVA ARK CLUSTER — CONEXÃO RÁPIDA & PORTAL GITHUB PAGES
- * Gerenciador de conexão em 1 clique, suporte Steam/Epic e correção do bug de AppID
+ * Gerenciador de conexão simplificado via console in-game (Steam & Epic Games)
  */
 
 // Configuração dos Servidores do Cluster
@@ -31,18 +31,18 @@ const I18N = {
     networkLabel: "ONDE VOCÊ ESTÁ JOGANDO?",
     netPublic: "🌐 Pela Internet (Amigos / Jogadores)",
     netLocal: "🏠 No mesmo PC / Casa do Host (Localhost)",
-    noticeTitle: "Aviso sobre o erro \"AppID Inválido\" da Steam:",
-    noticeText: "O aplicativo da Steam possui um bug conhecido que falha ao conectar por fora do jogo. O botão \"ENTRAR DIRETO NO ARK\" abaixo usa o AppID oficial <code>346110</code> para contornar essa falha! Ou simplesmente copie o comando e cole no console do jogo com <kbd>TAB</kbd>.",
     selectMap: "SELECIONE O MAPA:",
-    steamTitle: "Steam (Conexão Direta)",
-    steamSub: "Inicia com AppID 346110 (Sem erro de AppID)",
-    steamDesc: "Clique no botão abaixo para abrir o ARK pela Steam já conectando diretamente na partida.",
-    btnSteam: "ENTRAR DIRETO NO ARK",
-    steamRawLabel: "Comando Direto (Console):",
-    epicTitle: "Epic Games & Console",
-    epicSub: "100% Funcional e Sem Falhas",
+    steamTitle: "Steam",
+    steamSub: "Conexão via Console no Jogo",
+    steamSteps: [
+      "Abra o ARK na Steam.",
+      "No menu principal ou em qualquer mapa, aperte a tecla <kbd>TAB</kbd>.",
+      "Cole o comando abaixo e aperte <kbd>ENTER</kbd>:"
+    ],
+    epicTitle: "Epic Games",
+    epicSub: "Conexão via Console no Jogo",
     epicSteps: [
-      "Abra o ARK na Epic Games (ou Steam).",
+      "Abra o ARK na Epic Games.",
       "No menu principal ou em qualquer mapa, aperte a tecla <kbd>TAB</kbd>.",
       "Cole o comando abaixo e aperte <kbd>ENTER</kbd>:"
     ],
@@ -53,7 +53,7 @@ const I18N = {
       "Selecione a aba <strong>Favoritos</strong> e clique no <strong>+</strong>.",
       "Adicione o endereço com a QueryPort:"
     ],
-    favNote: "⚠️ Importante: Após salvar, entre pelo filtro Favorites dentro do ARK (não clique duas vezes pelo Steam).",
+    favNote: "⚠️ Importante: Após salvar, entre pelo filtro Favorites dentro do ARK.",
     discordTitle: "Comunidade & Discord",
     discordSub: "Suporte, Kits e Registro de Tribo",
     discordDesc: "Registre sua tribo para garantir plataforma oceânica grátis, use comandos como <code>/kit iniciante</code> e tire dúvidas com a administração!",
@@ -68,18 +68,18 @@ const I18N = {
     networkLabel: "WHERE ARE YOU PLAYING FROM?",
     netPublic: "🌐 Over the Internet (Friends / Players)",
     netLocal: "🏠 Same PC / Host Local Network (Localhost)",
-    noticeTitle: "Notice about Steam's \"Invalid AppID\" error:",
-    noticeText: "Steam has a known bug when connecting to ARK servers from outside the game. The \"LAUNCH DIRECTLY IN ARK\" button below uses official AppID <code>346110</code> to bypass this! Or simply copy the console command and run it in-game via <kbd>TAB</kbd>.",
     selectMap: "SELECT MAP:",
-    steamTitle: "Steam (Direct Launch)",
-    steamSub: "Starts with AppID 346110 (Bypasses AppID bug)",
-    steamDesc: "Click the button below to launch ARK via Steam and connect directly to the session.",
-    btnSteam: "LAUNCH DIRECTLY IN ARK",
-    steamRawLabel: "Direct Console Command:",
-    epicTitle: "Epic Games & Console",
-    epicSub: "100% Reliable & Direct",
+    steamTitle: "Steam",
+    steamSub: "In-Game Console Connection",
+    steamSteps: [
+      "Launch ARK on Steam.",
+      "In the main menu or inside any map, press <kbd>TAB</kbd>.",
+      "Paste the command below and press <kbd>ENTER</kbd>:"
+    ],
+    epicTitle: "Epic Games",
+    epicSub: "In-Game Console Connection",
     epicSteps: [
-      "Launch ARK on Epic Games (or Steam).",
+      "Launch ARK on Epic Games.",
       "In the main menu or inside any map, press <kbd>TAB</kbd>.",
       "Paste the command below and press <kbd>ENTER</kbd>:"
     ],
@@ -105,18 +105,18 @@ const I18N = {
     networkLabel: "¿DÓNDE ESTÁ JUGANDO?",
     netPublic: "🌐 Por Internet (Amigos / Jugadores)",
     netLocal: "🏠 En la misma PC / Red del Host (Localhost)",
-    noticeTitle: "Aviso sobre el error \"AppID Inválido\" de Steam:",
-    noticeText: "La aplicación Steam tiene un error conocido al conectar desde fuera del juego. El botón \"ENTRAR DIRECTO EN ARK\" usa el AppID oficial <code>346110</code> para evitar este fallo. O simplemente copie el comando y péguelo en la consola con <kbd>TAB</kbd>.",
     selectMap: "SELECCIONE EL MAPA:",
-    steamTitle: "Steam (Conexión Directa)",
-    steamSub: "Inicia con AppID 346110 (Sin error de AppID)",
-    steamDesc: "Haga clic abajo para abrir ARK por Steam conectando directamente a la partida.",
-    btnSteam: "ENTRAR DIRECTO EN ARK",
-    steamRawLabel: "Comando Directo (Consola):",
-    epicTitle: "Epic Games y Consola",
-    epicSub: "100% Funcional y Directo",
+    steamTitle: "Steam",
+    steamSub: "Conexión por Consola en el Juego",
+    steamSteps: [
+      "Abra ARK en Steam.",
+      "En el menú principal o dentro del juego, presione <kbd>TAB</kbd>.",
+      "Pegue el comando de abajo y presione <kbd>ENTER</kbd>:"
+    ],
+    epicTitle: "Epic Games",
+    epicSub: "Conexión por Consola en el Juego",
     epicSteps: [
-      "Abra ARK en Epic Games (o Steam).",
+      "Abra ARK en Epic Games.",
       "En el menú principal o dentro del juego, presione <kbd>TAB</kbd>.",
       "Pegue el comando de abajo y presione <kbd>ENTER</kbd>:"
     ],
@@ -129,7 +129,7 @@ const I18N = {
     ],
     favNote: "⚠️ Importante: Después de guardar, entre desde la pestaña Favoritos dentro de ARK.",
     discordTitle: "Comunidad y Discord",
-    discordSub: "Soporte, Kits de Inicio y Registro de Tribu",
+    discordSub: "Soporte, Kits de Inicio e Registro de Tribu",
     discordDesc: "¡Registre su tribu para ganar una plataforma oceánica gratis, use comandos como <code>/kit iniciante</code> y resuelva dudas!",
     copiedSuccess: "¡Copiado al portapapeles con éxito!",
     modalTitle: "⚙️ Configuración del Cluster",
@@ -213,29 +213,24 @@ function updateDisplay() {
   if (elServerName) elServerName.textContent = srv.name;
   
   // Valores de Conexão
-  // Protocolo Direto com AppID 346110 (ARK) que ignora o diálogo de servidor quebrado da Steam
-  const steamRunLink = `steam://run/346110//+connect%20${currentHost}:${srv.gamePort}/`;
-  const steamLegacyLink = `steam://connect/${currentHost}:${srv.queryPort}`;
   const consoleCommand = `open ${currentHost}:${srv.gamePort}`;
   const favAddress = `${currentHost}:${srv.queryPort}`;
 
-  // Atualizar Botão Steam Direto
-  const btnSteam = document.getElementById("btnSteamRun");
-  btnSteam.href = steamRunLink;
-  document.getElementById("inputSteamConsole").value = consoleCommand;
-
-  // Atualizar Link Legado
-  const legacyLink = document.getElementById("linkSteamConnectLegacy");
-  if (legacyLink) {
-    legacyLink.href = steamLegacyLink;
-  }
+  // Atualizar Steam (estilo igual à Epic Games)
+  const inputSteam = document.getElementById("inputSteamCmd");
+  if (inputSteam) inputSteam.value = consoleCommand;
+  const lblSteamPort = document.getElementById("lblSteamPort");
+  if (lblSteamPort) lblSteamPort.textContent = `Porta de Jogo: ${srv.gamePort}`;
 
   // Atualizar Epic Games
-  document.getElementById("inputEpicCmd").value = consoleCommand;
-  document.getElementById("lblEpicPort").textContent = `Porta de Jogo: ${srv.gamePort}`;
+  const inputEpic = document.getElementById("inputEpicCmd");
+  if (inputEpic) inputEpic.value = consoleCommand;
+  const lblEpicPort = document.getElementById("lblEpicPort");
+  if (lblEpicPort) lblEpicPort.textContent = `Porta de Jogo: ${srv.gamePort}`;
 
   // Atualizar Favoritos
-  document.getElementById("inputFavAddr").value = favAddress;
+  const inputFav = document.getElementById("inputFavAddr");
+  if (inputFav) inputFav.value = favAddress;
 
   // Atualizar Textos de Idioma
   applyTranslations();
@@ -257,15 +252,13 @@ function applyTranslations() {
   setTxt("txtNetworkLabel", t.networkLabel);
   setTxt("btnNetPublic", t.netPublic);
   setTxt("btnNetLocal", t.netLocal);
-  setTxt("txtNoticeTitle", t.noticeTitle);
-  setTxt("txtNoticeText", t.noticeText, true);
   setTxt("txtSelectMap", t.selectMap);
 
   setTxt("txtSteamTitle", t.steamTitle);
   setTxt("txtSteamSub", t.steamSub);
-  setTxt("txtSteamDesc", t.steamDesc);
-  setTxt("txtBtnSteam", t.btnSteam);
-  setTxt("txtSteamRawLabel", t.steamRawLabel);
+  if (t.steamSteps) {
+    setTxt("txtSteamSteps", t.steamSteps.map(step => `<li>${step}</li>`).join(""), true);
+  }
 
   setTxt("txtEpicTitle", t.epicTitle);
   setTxt("txtEpicSub", t.epicSub);
@@ -371,7 +364,7 @@ function setupSettingsModal() {
 // Botões de Cópia
 function setupCopyButtons() {
   const copyMap = [
-    { btnId: "btnCopySteamConsole", inputId: "inputSteamConsole" },
+    { btnId: "btnCopySteam", inputId: "inputSteamCmd" },
     { btnId: "btnCopyEpic", inputId: "inputEpicCmd" },
     { btnId: "btnCopyFav", inputId: "inputFavAddr" }
   ];
