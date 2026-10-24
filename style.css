@@ -304,26 +304,126 @@ body {
   margin: 0 auto 28px;
 }
 
-/* Auto Connect Countdown Banner */
-.auto-connect-card {
-  max-width: 650px;
-  margin: 0 auto;
-  background: linear-gradient(135deg, rgba(0, 245, 212, 0.12) 0%, rgba(14, 20, 32, 0.85) 100%);
-  border: 1px solid var(--border-card-hover);
+/* Network Toggle Box (Internet vs Localhost) */
+.network-toggle-box {
+  margin: 0 auto 20px;
+  max-width: 620px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.network-label {
+  font-family: var(--font-hud);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--text-dim);
+}
+
+.network-btn-group {
+  display: flex;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 5px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  gap: 6px;
+  width: 100%;
+}
+
+.net-btn {
+  flex: 1;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+}
+
+.net-btn:hover {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.net-btn.active {
+  background: var(--cyan-primary);
+  color: #070a10;
+  font-weight: 700;
+  box-shadow: 0 0 12px var(--cyan-glow);
+}
+
+/* Steam AppID Notice */
+.steam-appid-notice {
+  max-width: 680px;
+  margin: 0 auto 24px;
+  background: rgba(255, 183, 3, 0.08);
+  border: 1px solid rgba(255, 183, 3, 0.25);
   border-radius: var(--radius-md);
-  padding: 16px 24px;
-  backdrop-filter: blur(16px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 245, 212, 0.2);
+  padding: 14px 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  text-align: left;
+}
+
+.notice-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.notice-content {
+  font-size: 0.88rem;
+  color: #e2e8f0;
+  line-height: 1.5;
+}
+
+.notice-content strong {
+  display: block;
+  color: var(--amber-accent);
+  margin-bottom: 4px;
+  font-size: 0.92rem;
+}
+
+.notice-content kbd {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--amber-accent);
+}
+
+.notice-content code {
+  color: var(--cyan-primary);
+  font-family: var(--font-mono);
+}
+
+/* Legacy Link Row */
+.legacy-link-row {
+  margin-top: 14px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+
+.legacy-link {
+  color: var(--text-muted);
+  text-decoration: underline;
   transition: var(--transition);
 }
 
-.auto-connect-card.hidden {
-  display: none;
+.legacy-link:hover {
+  color: var(--cyan-primary);
 }
 
 .auto-connect-info {

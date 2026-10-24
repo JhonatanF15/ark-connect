@@ -75,30 +75,29 @@
         Escolha abaixo o método mais conveniente para a sua plataforma e entre imediatamente no jogo.
       </p>
 
-      <!-- Auto-Launch Countdown Alert -->
-      <div class="auto-connect-card" id="autoConnectBox">
-        <div class="auto-connect-info">
-          <div class="spinner-timer">
-            <svg viewBox="0 0 36 36" class="circular-chart">
-              <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-              <path class="circle" id="timerProgress" stroke-dasharray="100, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-              <text x="18" y="21.5" class="timer-text" id="countdownSec">3</text>
-            </svg>
-          </div>
-          <div>
-            <h2 class="auto-connect-title" id="txtAutoConnectTitle">Conexão Automática Steam</h2>
-            <p class="auto-connect-text" id="txtAutoConnectDesc">
-              Iniciando o ARK e conectando via Steam em instantes...
-            </p>
-          </div>
+      <!-- Network Location Selector (Internet vs Host Local) -->
+      <div class="network-toggle-box">
+        <span class="network-label" id="txtNetworkLabel">ONDE VOCÊ ESTÁ JOGANDO?</span>
+        <div class="network-btn-group">
+          <button type="button" class="net-btn active" id="btnNetPublic" data-mode="public">
+            🌐 Pela Internet (Amigos / Jogadores)
+          </button>
+          <button type="button" class="net-btn" id="btnNetLocal" data-mode="local">
+            🏠 No mesmo PC / Casa do Host (Localhost)
+          </button>
         </div>
-        <div class="auto-connect-actions">
-          <button type="button" class="btn btn-primary" id="btnConnectNow">
-            🚀 <span id="txtBtnConnectNow">Conectar Agora</span>
-          </button>
-          <button type="button" class="btn btn-ghost" id="btnCancelAuto">
-            ✕ <span id="txtBtnCancelAuto">Cancelar</span>
-          </button>
+      </div>
+
+      <!-- Warning / Tip Card for Steam AppID Error -->
+      <div class="steam-appid-notice">
+        <div class="notice-icon">💡</div>
+        <div class="notice-content">
+          <strong id="txtNoticeTitle">Aviso sobre o erro "AppID Inválido" da Steam:</strong>
+          <span id="txtNoticeText">
+            O aplicativo da Steam possui um bug conhecido que falha ao conectar por fora do jogo. 
+            O botão <strong>"ENTRAR DIRETO NO ARK"</strong> abaixo usa o AppID oficial <code>346110</code> para contornar essa falha! 
+            Ou simplesmente copie o comando e cole no console do jogo com <kbd>TAB</kbd>.
+          </span>
         </div>
       </div>
     </section>
@@ -119,9 +118,9 @@
     <!-- Connection Cards Grid -->
     <div class="cards-grid">
       
-      <!-- Card 1: Steam 1-Click (Hero Card) -->
+      <!-- Card 1: Steam 1-Click Direto (AppID 346110) -->
       <div class="card card-hero">
-        <div class="card-badge">RECOMENDADO PC</div>
+        <div class="card-badge">RECOMENDADO STEAM</div>
         <div class="card-header">
           <div class="card-icon steam-icon">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
@@ -129,29 +128,34 @@
             </svg>
           </div>
           <div>
-            <h3 class="card-title" id="txtSteamTitle">Steam (1-Clique)</h3>
-            <p class="card-subtitle" id="txtSteamSub">Abre o ARK e conecta diretamente</p>
+            <h3 class="card-title" id="txtSteamTitle">Steam (Conexão Direta)</h3>
+            <p class="card-subtitle" id="txtSteamSub">Inicia com AppID 346110 (Sem erro de AppID)</p>
           </div>
         </div>
 
         <div class="card-body">
           <p class="card-instruction" id="txtSteamDesc">
-            Clique no botão abaixo. Seu navegador pedirá confirmação para iniciar a Steam e entrará no servidor.
+            Clique no botão abaixo para abrir o ARK pela Steam já conectando diretamente na partida.
           </p>
 
-          <a href="#" class="btn btn-steam btn-glow" id="btnSteamConnect">
-            <span class="btn-text" id="txtBtnSteam">ENTRAR VIA STEAM</span>
-            <span class="btn-subtext" id="lblSteamPort">QueryPort: 27015</span>
+          <a href="#" class="btn btn-steam btn-glow" id="btnSteamRun">
+            <span class="btn-text" id="txtBtnSteam">ENTRAR DIRETO NO ARK</span>
+            <span class="btn-subtext" id="lblSteamRunSub">Protocolo: steam://run/346110</span>
           </a>
 
           <div class="copy-box">
-            <span class="copy-label" id="txtSteamRawLabel">Link Direto:</span>
+            <span class="copy-label" id="txtSteamRawLabel">Comando Direto (Console):</span>
             <div class="copy-input-row">
-              <input type="text" readonly class="code-input" id="inputSteamRaw" value="steam://connect/...">
-              <button type="button" class="copy-action-btn" id="btnCopySteamRaw" title="Copiar Link">
+              <input type="text" readonly class="code-input command-font" id="inputSteamConsole" value="open ...">
+              <button type="button" class="copy-action-btn" id="btnCopySteamConsole" title="Copiar Comando">
                 <span class="copy-text">Copiar</span>
               </button>
             </div>
+          </div>
+          
+          <div class="legacy-link-row">
+            <span class="legacy-label">Ou tente o protocolo navegador:</span>
+            <a href="#" id="linkSteamConnectLegacy" class="legacy-link">steam://connect (Janela Externa)</a>
           </div>
         </div>
       </div>
@@ -166,15 +170,15 @@
             </svg>
           </div>
           <div>
-            <h3 class="card-title" id="txtEpicTitle">Epic Games</h3>
-            <p class="card-subtitle" id="txtEpicSub">Conexão via Console no Jogo</p>
+            <h3 class="card-title" id="txtEpicTitle">Epic Games & Console</h3>
+            <p class="card-subtitle" id="txtEpicSub">100% Funcional e Sem Falhas</p>
           </div>
         </div>
 
         <div class="card-body">
           <ol class="step-list" id="txtEpicSteps">
-            <li>Abra o ARK na Epic Games.</li>
-            <li>No menu principal ou dentro de qualquer mapa, aperte a tecla <kbd>TAB</kbd>.</li>
+            <li>Abra o ARK na Epic Games (ou Steam).</li>
+            <li>No menu principal ou em qualquer mapa, aperte a tecla <kbd>TAB</kbd>.</li>
             <li>Cole o comando abaixo e aperte <kbd>ENTER</kbd>:</li>
           </ol>
 
@@ -192,12 +196,12 @@
 
       <!-- Card 3: Steam Favoritos -->
       <div class="card">
-        <div class="card-badge fav-badge">FAVORITOS PERMANENTES</div>
+        <div class="card-badge fav-badge">FAVORITOS DA STEAM</div>
         <div class="card-header">
           <div class="card-icon fav-icon">⭐</div>
           <div>
-            <h3 class="card-title" id="txtFavTitle">Favoritos da Steam</h3>
-            <p class="card-subtitle" id="txtFavSub">Para o servidor nunca sumir</p>
+            <h3 class="card-title" id="txtFavTitle">Lista de Favoritos</h3>
+            <p class="card-subtitle" id="txtFavSub">Para ver sempre dentro do jogo</p>
           </div>
         </div>
 
@@ -205,7 +209,7 @@
           <ol class="step-list" id="txtFavSteps">
             <li>Na Steam, clique em <strong>Exibir</strong> ➔ <strong>Servidores de Jogos</strong>.</li>
             <li>Selecione a aba <strong>Favoritos</strong> e clique no <strong>+</strong>.</li>
-            <li>Adicione o endereço do servidor:</li>
+            <li>Adicione o endereço com a QueryPort:</li>
           </ol>
 
           <div class="copy-box">
@@ -216,7 +220,9 @@
               </button>
             </div>
           </div>
-          <span class="card-footer-note" id="txtFavNote">Aparecerá automaticamente nos seus Favoritos no ARK!</span>
+          <span class="card-footer-note" id="txtFavNote">
+            ⚠️ Importante: Após salvar, entre pelo filtro <strong>Favorites dentro do ARK</strong> (não clique duas vezes pelo Steam).
+          </span>
         </div>
       </div>
 
@@ -236,7 +242,7 @@
 
         <div class="card-body">
           <p class="card-instruction" id="txtDiscordDesc">
-            Registre sua tribo para garantir plataforma oceânica grátis, use comandos como <code>/kit iniciante</code> e vote na rotação de novos mapas!
+            Registre sua tribo para garantir plataforma oceânica grátis, use comandos como <code>/kit iniciante</code> e tire dúvidas com a administração!
           </p>
 
           <a href="https://discord.gg/xWXeu48XDj" target="_blank" rel="noopener noreferrer" class="btn btn-discord">
