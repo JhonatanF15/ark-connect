@@ -207,8 +207,10 @@ function updateDisplay() {
   const t = I18N[currentLang];
   
   // Título e Nomes
-  document.getElementById("txtCurrentServerName").textContent = srv.name;
-  document.getElementById("txtHeroTitle").innerHTML = `${t.heroTitlePrefix} <span class="highlight-cyan">${srv.name}</span>`;
+  const elPrefix = document.getElementById("txtHeroPrefix");
+  const elServerName = document.getElementById("txtCurrentServerName");
+  if (elPrefix) elPrefix.textContent = t.heroTitlePrefix;
+  if (elServerName) elServerName.textContent = srv.name;
   
   // Valores de Conexão
   // Protocolo Direto com AppID 346110 (ARK) que ignora o diálogo de servidor quebrado da Steam
